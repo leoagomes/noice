@@ -24,7 +24,7 @@ paddedText = Padding
         inherit: false
 
 simpleButton =
-    Button:
+    Button
         selected: false
         selectable: true
         actions:
