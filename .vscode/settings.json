@@ -1,0 +1,13 @@
+{
+    "C_Cpp.dimInactiveRegions": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/**.lua": {
+            "when": "$(basename).moon"
+        }
+    }
+}
