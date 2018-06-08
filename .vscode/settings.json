@@ -10,5 +10,6 @@
             "when": "$(basename).moon"
         }
     },
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+    "files.eol": "\n"
 }

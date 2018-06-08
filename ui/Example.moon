@@ -52,3 +52,14 @@ simpleButton =
                 style:
                     font: fonts.vcr
                     color: { 255, 255, 255 }
+
+
+ilist =
+    List
+        align: 'center'
+        direction: 'vertical'
+        navigation:
+            forward: () -> false
+            backward: () -> false
+        elements: {
+        }

@@ -42,8 +42,18 @@ class Button extends BaseElement
 
     initialize: (parent) =>
         @parent = parent
+
+        -- inherit actions
         if @actions.inherit ~= false
             setmetatable @actions, __index: @parent.actions
+        
+        -- inherit style
+        if @parent and @style.inherit ~= false
+            setmetatable @style, __index: parent.style
+
+        -- initialize child
+        if @child
+            @child\initialize self
 
     mousepressed: (x, y, button, istouch) =>
         if x >= 0 and x < @bounds.x and y >= 0 and y < @bounds.y
@@ -73,6 +83,8 @@ class Button extends BaseElement
             if not pressed and @lastpressed
                 @actions.onup self, nil, nil, nil, true
         @lastpressed = pressed
+
+        @child\update deltatime
 
     draw: (x, y) =>
         color = @color

@@ -6,6 +6,9 @@ class BaseElement
     debugDraw: (x, y) =>
     calculateBox: =>
 
+    enter: =>
+    leave: =>
+
     mousepressed: () =>
     mousereleased: () =>
     mousemoved: () =>
