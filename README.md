@@ -3,6 +3,9 @@
 Noice is a simplified RTS (Real Time Strategy) game with an online focus.
 
 It is still under development and no usable product is available at the moment.
+Because of that, the information on building is not very useful aside for those
+who plan on contributing (which we appreciate). If you plan on contributing,
+check [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Building
 
@@ -19,7 +22,7 @@ Install `lua` (preferrably version 5.1) and `luarocks` using your OS' package
 manager (like pacman, brew or chocolatey), then install moonscript by running
 `luarocks install moonscript`.
 
-### Building...
+### Building (again)...
 
 Running `moonc .` on the root of this project should suffice. A building\cleanup
 script is under development as well.
