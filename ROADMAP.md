@@ -4,7 +4,7 @@
 
 These are the first few things we want to get off the ground:
 
-On game states:
+On game states (screens):
 
 * [ ] main menu
 * [ ] lobby
@@ -13,12 +13,11 @@ On game states:
 
 On general game logic:
 
-* [ ] entity structure
 * [ ] first unit
-* [ ] unit collision
 * [ ] first unit AI (attacks everything it sees)
+* [ ] unit collision
 * [ ] first base
-* [ ] map creation
+* [ ] automatic map generation
 * [ ] first game mode (simplest)
 
 On networking:
@@ -28,6 +27,6 @@ On networking:
 * [ ] start thinking about security
 
 
-## Pre^4 alpha
+## (ultra mega) Early Alpha
 
 * [ ] at least simple local game workflow
