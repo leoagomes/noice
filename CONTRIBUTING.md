@@ -8,10 +8,13 @@ environment.
 
 ## Environment Setup
 
-In this game, we use the Godot Engine. Godot is a powerful and easy to use MIT licensed 2D/3D game engine.
+In this game, we use the Godot Engine. Godot is a powerful and easy to use MIT
+licensed 2D/3D game engine.
 
-To contribute with our project, just download the last stable [Godot Engine](https://godotengine.org)
-and open the project. Also, you can install the [Steam version](https://store.steampowered.com/app/404790/)
+To contribute with our project, just download the last stable
+[Godot Engine](https://godotengine.org)
+and open the project. Also, you can install the
+[Steam version](https://store.steampowered.com/app/404790/)
 if you got a Steam account. Now you are good to go!
 
 ### Some useful links about Godot
