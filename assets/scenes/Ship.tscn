@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game/ship/Ship.gd" type="Script" id=1]
+[ext_resource path="res://assets/ship/spaceship.png" type="Texture" id=2]
+[ext_resource path="res://assets/obstacles/b.png" type="Texture" id=3]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 128.0
+
+[node name="World" type="Node" index="0"]
+
+[node name="Ship" type="KinematicBody2D" parent="." index="0"]
+
+position = Vector2( 16, 15.9999 )
+rotation = 4.71239
+scale = Vector2( 0.500001, 0.5 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ship" index="0"]
+
+position = Vector2( -2.32583, 2.38419e-007 )
+scale = Vector2( 1.18697, 1.28 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship" index="1"]
+
+position = Vector2( -10.3244, 0.179221 )
+rotation = 1.5708
+scale = Vector2( 3.57179, 3.33179 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="StaticBody" type="StaticBody2D" parent="." index="1"]
+
+position = Vector2( 128, 224 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="StaticBody" index="0"]
+
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody" index="1"]
+
+shape = SubResource( 2 )
+
+
