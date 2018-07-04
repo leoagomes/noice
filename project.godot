@@ -11,13 +11,19 @@ config_version=3
 [application]
 
 config/name="Noice"
-run/main_scene="res://assets/scenes/Ship.tscn"
+run/main_scene="res://assets/scenes/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Utils="*res://game/Utils.gd"
 
 [display]
 
-window/size/width=640
-window/size/height=360
+window/size/width=1080
+window/size/height=640
+window/size/test_width=1080
+window/size/test_height=640
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
@@ -25,7 +31,19 @@ window/stretch/aspect="expand"
 
 ui_mouse_left=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
+wheel_down=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+wheel_up=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+ui_mouse_right=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+
+[physics]
+
+2d/default_gravity_vector=Vector2( 0, 0 )
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

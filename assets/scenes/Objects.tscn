@@ -1,0 +1,157 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://game/ObjectsFactory.gd" type="Script" id=1]
+[ext_resource path="res://game/Base.gd" type="Script" id=2]
+[ext_resource path="res://assets/base/base.png" type="Texture" id=3]
+[ext_resource path="res://game/Ship.gd" type="Script" id=4]
+[ext_resource path="res://assets/ship/spaceship.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 48, 48 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 48, 48 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
+
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 46.7796
+
+[node name="ObjectsFactory" type="Node" index="0"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Base" type="KinematicBody2D" parent="." index="0"]
+
+position = Vector2( 176, 48 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Base" index="0"]
+
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base" index="1"]
+
+visible = false
+shape = SubResource( 1 )
+
+[node name="InfluencialArea" type="Area2D" parent="Base" index="2"]
+
+visible = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Shape" type="CollisionShape2D" parent="Base/InfluencialArea" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="Base" index="3"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Ship" type="KinematicBody2D" parent="." index="1"]
+
+position = Vector2( 8, 8 )
+scale = Vector2( 0.250001, 0.25 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 4 )
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ship" index="0"]
+
+position = Vector2( -2.32583, 2.38419e-007 )
+scale = Vector2( 1.18697, 1.28 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship" index="1"]
+
+visible = false
+position = Vector2( -10.3244, 0.179221 )
+rotation = 1.5708
+scale = Vector2( 3.57179, 3.33179 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="DetectionRange" type="Area2D" parent="Ship" index="2"]
+
+visible = false
+position = Vector2( 1.14441e-005, 4.76837e-006 )
+scale = Vector2( 2.66665, 2.66667 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship/DetectionRange" index="0"]
+
+position = Vector2( 0.000152588, -7.62939e-006 )
+scale = Vector2( 1.41233, 1.41233 )
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Tween" type="Tween" parent="Ship" index="3"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="LaserExit" type="Position2D" parent="Ship" index="4"]
+
+position = Vector2( 23.9998, 0 )
+scale = Vector2( 1.06666, 1 )
+
+[node name="AttackCooldown" type="Timer" parent="Ship" index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="area_shape_entered" from="Ship/DetectionRange" to="Ship" method="_on_DetectionRange_area_shape_entered"]
+
+[connection signal="area_shape_exited" from="Ship/DetectionRange" to="Ship" method="_on_DetectionRange_area_shape_exited"]
+
+
