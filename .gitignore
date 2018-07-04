@@ -13,5 +13,7 @@ export_presets.cfg
 !.vscode/extensions.json
 .history
 
+### Binaries ###
+*.exe
 
 # End of https://www.gitignore.io/api/godot,visualstudiocode
