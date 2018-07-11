@@ -11,10 +11,10 @@
 custom_solver_bias = 0.0
 extents = Vector2( 48, 48 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 48, 48 )
+radius = 71.0
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
@@ -42,9 +42,6 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Base" index="0"]
 
@@ -89,9 +86,6 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 4 )
 _sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Ship" index="0"]
 
