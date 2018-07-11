@@ -1,7 +1,11 @@
 extends Node
 
-# Constants
+## Constants ##
+# Origin
 const ORIGIN = Vector2(0, 0)
+# x: limit_right
+# y: limit_bottom
+var map_limit = Vector2(5000, 2500)
 
 enum Type {
 	SHIP = 0,

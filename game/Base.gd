@@ -18,25 +18,23 @@ func _init():
 	spawned_ships = 0
 	spawn_rate = 10
 	max_scale = Vector2(1.0, 1.0)
-	min_scale = Vector2(0.1, 0.1)
+	min_scale = Vector2(0.75, 0.75)
 	delta_scale = Vector2(0.1, 0.1)
 
 	type = Utils.BASE
+
 	set_process(true)
 
-# TODO: not done yet
 func animate():
-	tween.interpolate_property(sprite, "rotation", rotation, rotation + angular_speed,
+	tween.interpolate_property(self, "rotation", rotation, rotation + angular_speed,
 	0.5, tween.TRANS_LINEAR, Tween.EASE_OUT)
 	if scale + delta_scale < max_scale && scale + delta_scale > min_scale:
-		tween.interpolate_property(sprite, "scale", scale, scale + delta_scale,
+		tween.interpolate_property(self, "scale", scale, scale + delta_scale,
 		1.0, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	else:
 		delta_scale = -delta_scale
 
 	tween.start()
-
-	print(scale)
 
 func _process(delta):
 	animate()

@@ -1,19 +1,24 @@
 extends KinematicBody2D
 
-# Nodes
-onready var sprite = $Sprite
-onready var tween = $Tween
-onready var detectioin_range = $DetectionRange
+##### Ship.gd #####
 
-# Vectors
+#### Variables ####
+### Nodes ###
+onready var sprite = $Sprite
+onready var detection_range = $DetectionRange
+onready var tween = $Tween
+onready var laser_exit = $LaserExit
+onready var attack_cooldown = $AttackCooldown
+
+### Vectors ###
 var target_pos # Position of the target or mouse
 var velocity # Vector
 var heading # Vector indicating the direction of the ship's nose
 var mouse_pos
+var collision_point
 
-# Number variables
+### Numberical ###
 var linear_speed # Speed to move forward
-var angular_speed # Rotation speed
 var cooldown # Cooldown when pursuing a enemy base/ship
 var distance_to_keep # Distance to keep from the position where the mouse clicked
 var attack # Quantity of damage it causes when fighting
@@ -22,17 +27,21 @@ var team # See Utils.Team enum
 var type # See Utils.Type enum
 var color # Team color
 
-# Booleans
+### Booleans ###
 var can_pursuit # Whether or not can pursue a enemy base/ship
 var pursuing_base # If the ship is pursuing a enemy/neutral base
 var pursuing_ship # If the ship is pursuing a enemy/neutral ship
 
-# Objects
+### Objects ###
 var pursued_object # Self explanatory
 
-# Constants
+### Constants ###
 const COOLDOWN_TIME = 15 # Cooldown when seeking a enemy base/ship
 
+#### Functions ####
+
+### Internal functions ###
+## Initialization ##
 func _init():
 	target_pos = Vector2(0, 0)
 	velocity = Vector2(0, 0)
@@ -40,7 +49,6 @@ func _init():
 	mouse_pos = get_global_mouse_position()
 
 	linear_speed = 100
-	angular_speed = 0.1
 	cooldown = 0
 	distance_to_keep = 39
 	attack = 2
@@ -53,16 +61,24 @@ func _init():
 
 	set_process(true)
 
-# Called when a ship is created by WorldController
-func setup(pos, t, target):
-	# TODO: pass the texture
-	position = pos
-	team = t
-	target_pos = target
+## Processing functions ##
+func _physics_process(delta):
+	# Moving the ship
+	move_and_slide(velocity)
 
-func is_pursuing():
-	return pursuing_base || pursuing_ship
+# In sync with the renderization, best for drawing
+func _process(delta):
+	calculate_velocity()
+	# Manages the cooldown
+	if cooldown == 0:
+		can_pursuit = true
+		cooldown = COOLDOWN_TIME
+	elif cooldown > 0:
+		cooldown -= 1
+	# Rotating the ship to look at the mouse position
+	rotate_smoothly()
 
+## Input ##
 func _unhandled_input(event):
 	# Pressing the mouse's left button makes the ship 
 	# 'chase' the location it's been pressed
@@ -73,29 +89,20 @@ func _unhandled_input(event):
 		can_pursuit = false
 		cooldown = COOLDOWN_TIME
 
+## Drawing ##
+func _draw():
+	if is_pursuing():
+		draw_rect(Rect2(laser_exit, pursued_object), Color(255, 0, 0))
+
+### Movement ###
 # Handles the Tween code to rotate the ship
+# Somehow, the rotation from upper left to bottom left and vice-versa is bugged.
+# Don't know how to correct this.
 func rotate_smoothly():
-	tween.interpolate_property(self, "rotation_degrees", rad2deg(get_rotation()),
-	rad2deg(heading.angle()), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	tween.interpolate_property(self, "rotation", get_rotation(), heading.angle(),
+	0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	tween.start()
 
-# Manages the cooldown
-func cooldown():
-	if cooldown == 0:
-		can_pursuit = true
-		cooldown = COOLDOWN_TIME
-	elif cooldown > 0:
-		cooldown -= 1
-
-# Used for greater processing speed
-func _process(delta):
-	calculate_velocity()
-	cooldown()
-	# Rotating the ship to look at the mouse position
-	rotate_smoothly()
-
-# TODO: fire an event when a object is in range then call this function
-# TODO: when the body enters, put in an array, when the body exits, remove from array
 func calculate_velocity():
 	if !is_pursuing():
 		# Keep a certain distance from the target_pos
@@ -108,7 +115,6 @@ func calculate_velocity():
 			target_pos = mouse_pos
 			heading = target_pos - position
 			velocity = heading.normalized() * linear_speed
-
 	else:
 		# Rotated towards the pursued enemy
 		if can_pursuit && pursued_object:
@@ -122,10 +128,8 @@ func calculate_velocity():
 			heading = target_pos - position
 			velocity = heading.normalized() * linear_speed
 
-func _physics_process(delta):
-	# Moving the ship
-	move_and_collide(velocity*delta)
-
+### Signal Handling ###
+## DetectionRange ##
 func _on_DetectionRange_area_shape_entered(area_id, area, area_shape, self_shape):
 	var body = area.get_parent()
 
@@ -133,14 +137,12 @@ func _on_DetectionRange_area_shape_entered(area_id, area, area_shape, self_shape
 		if body.type == Utils.BASE:
 			if can_pursuit && !pursuing_ship:
 				pursuing_base = true
-
 		elif body.type == Utils.SHIP:
 			if can_pursuit:
 				pursuing_ship = true
 				pursuing_base = false
 
 		pursued_object = body
-
 
 func _on_DetectionRange_area_shape_exited(area_id, area, area_shape, self_shape):
 	var body = area.get_parent()
@@ -150,3 +152,16 @@ func _on_DetectionRange_area_shape_exited(area_id, area, area_shape, self_shape)
 		elif body.type == Utils.BASE:
 			pursuing_base = false
 		pursued_object = null
+
+### Others ###
+## Initialization ##
+# Called when a ship is created by WorldController
+func setup(pos, t, target):
+	# TODO: pass the texture
+	position = pos
+	team = t
+	target_pos = target
+
+## Internal utils
+func is_pursuing():
+	return pursuing_base || pursuing_ship
