@@ -1,5 +1,7 @@
 # Noice Roadmap
 
+**the project is currently being reworked. this roadmap should be updated soon(TM)**
+
 ## First things first
 
 These are the first few things we want to get off the ground:
