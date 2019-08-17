@@ -1,0 +1,25 @@
+# Created by https://www.gitignore.io/api/godot,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=godot,visualstudiocode
+
+### Godot ###
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+
+# Mono-specific ignores
+.mono/
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/godot,visualstudiocode
