@@ -1,7 +1,6 @@
 # Noice
 
-Noice is a simplified RTS (Real Time Strategy) game with an online focus made
-with Godot.
+**Noice** is a simplified RTS (Real Time Strategy) game with an online focus made with Godot.
 
 ## About the game
 
