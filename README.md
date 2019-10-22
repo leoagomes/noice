@@ -1,26 +1,27 @@
 # Noice
 
-Noice is a simplified RTS (Real Time Strategy) game with an online focus made
+**Noice** is a simplified Real Time Strategy (RTS) game with an online focus made
 with Godot.
 
 ## About the game
 
-The purpose of Noice is to capture all bases, attacking them with the army of
-ships youdevelop. Each base is connected to some other bases, so you can attack
-only a limited number of bases.
-If you want to understand better that concept, you can see the game that
-influenciated ours, [ICE](https://play.google.com/store/apps/details?id=com.queader.ice).
+The main game objective of **Noice** is to capture all bases, by attacking the enemy bases with the army of ships you develop. 
+
+Each base is connected to another base, so you can attack only a limited number of bases.
+To better understand the game concept, you can take a look at the game that inspired us. 
+[ICE](https://play.google.com/store/apps/details?id=com.queader.ice).
 
 ## Development
 
-It is still under development and no usable product is available at the moment.
-Because of that, the information on building is not very useful aside for those
-who plan on contributing (which we appreciate). If you plan on contributing,
-check [CONTRIBUTING.md](CONTRIBUTING.md).
+**Noice** is still under the early stages of development and there are no functional product available at the moment.
+
+Therefore, the information available on building the project is not very useful. Aside for those who plan to contribute (much appreciated). 
+
+If you plan on contributing, please check [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Dependencies
 
-Since the project uses Godot, the game don't have any dependencies.
+Since the project uses Godot, there won't be any dependencies.
 
 ## License
 
