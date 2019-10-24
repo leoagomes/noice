@@ -24,6 +24,4 @@ The game does not have any dependencies, since the project uses Godot.
 
 ## License
 
-All code in this repository unless where stated otherwise is released under the
-GNU Affero GPL at the moment (which may change in the future). For more
-information on licensing, please check LICENSE.
+At present, all code in this repository (except where stated otherwise) is released under the GNU Affero GPL. Please read over the LICENSE file for more information.
