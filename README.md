@@ -20,7 +20,7 @@ check [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Dependencies
 
-Since the project uses Godot, the game don't have any dependencies.
+The game does not have any dependencies, since the project uses Godot.
 
 ## License
 
