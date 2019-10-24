@@ -8,8 +8,8 @@ with Godot.
 The purpose of Noice is to capture all bases, attacking them with the army of
 ships you develop. Each base is connected to some other bases, so you can attack
 only a limited number of bases.
-If you want to understand better that concept, you can see the game that
-influenciated ours, [ICE](https://play.google.com/store/apps/details?id=com.queader.ice).
+If you want to better understand that concept, you can see the game that
+influenced ours, [ICE](https://play.google.com/store/apps/details?id=com.queader.ice).
 
 ## Development
 
