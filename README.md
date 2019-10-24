@@ -6,10 +6,10 @@ with Godot.
 ## About the game
 
 The purpose of Noice is to capture all bases, attacking them with the army of
-ships youdevelop. Each base is connected to some other bases, so you can attack
+ships you develop. Each base is connected to some other bases, so you can attack
 only a limited number of bases.
-If you want to understand better that concept, you can see the game that
-influenciated ours, [ICE](https://play.google.com/store/apps/details?id=com.queader.ice).
+If you want to better understand that concept, you can see the game that
+influenced ours, [ICE](https://play.google.com/store/apps/details?id=com.queader.ice).
 
 ## Development
 
@@ -20,10 +20,8 @@ check [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Dependencies
 
-Since the project uses Godot, the game don't have any dependencies.
+The game does not have any dependencies, since the project uses Godot.
 
 ## License
 
-All code in this repository unless where stated otherwise is released under the
-GNU Affero GPL at the moment (which may change in the future). For more
-information on licensing, please check LICENSE.
+At present, all code in this repository (except where stated otherwise) is released under the GNU Affero GPL. Please read over the LICENSE file for more information.
